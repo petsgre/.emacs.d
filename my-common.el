@@ -89,4 +89,20 @@
 (global-set-key [\M-\S-up] 'move-text-up)
 (global-set-key [\M-\S-down] 'move-text-down)
 
+;; 在当前窗口显示buffer list
+(global-set-key (kbd "C-x C-b") 'ibuffer)
+
+
+;; 注释快捷键
+(global-set-key (kbd "C-x C-/") 'comment-or-uncomment-region)
+
+;; 剪切整行
+(global-set-key (kbd "<s-backspace>") 'kill-whole-line)
+
+;; 列出function菜单
+(global-set-key (kbd "M-s i") 'counsel-imenu)
+
+;; 启动prettier
+(global-prettier-mode 1)
+
 (provide 'my-common)

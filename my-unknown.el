@@ -14,4 +14,4 @@
 (setq mouse-yank-at-point nil)
 
 
-(provide 'un-known)
+(provide 'my-unknown)
