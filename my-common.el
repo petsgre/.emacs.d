@@ -4,6 +4,9 @@
 ;; 不要导航菜单
 (tool-bar-mode -1)
 
+;; 不要滚动条
+(scroll-bar-mode -1)
+
 ;; 自动开启删除模式 选中之后直接编辑
 (delete-selection-mode 1)
 (delete-selection-mode nil)
@@ -21,6 +24,12 @@
 
 ;; 选中当前区域或单词
 (global-set-key (kbd "s-d") 'mc/mark-next-like-this)
+
+;; 格式化快捷键
+;;(global-set-key (kbd "C-M-\\") 'prettier-format)
+
+;; magit查看每行log
+(global-set-key (kbd "s-b") 'magit-blame-addition)
 
 ;; 进入全屏
 (defun fullscreen ()
@@ -103,6 +112,24 @@
 (global-set-key (kbd "M-s i") 'counsel-imenu)
 
 ;; 启动prettier
-(global-prettier-mode 1)
+;; (global-prettier-mode 1)
+
+;; 直接使用prettier命令
+(defun jester/prettier-js-file-1 ()
+  "Call prettier on current file."
+  (interactive)
+  (call-process-shell-command (format "node %s/node_modules/.bin/prettier --no-semi false --no-editorconfig --write %s"
+                                      (projectile-project-root)
+                                      (buffer-file-name))))
+(eval-after-load "web-mode" '(progn
+                               (define-key web-mode-map (kbd "C-M-\\") 'jester/prettier-js-file-1)))
+
+(global-set-key (kbd "C-M-\\") 'jester/prettier-js-file-1)
+
+;; 刷新buffer无需confirm
+(defun revert-buffer-no-confirm ()
+    "Revert buffer without confirmation."
+    (interactive) (revert-buffer t t))
+(global-set-key (kbd "C-x C-j") (lambda () (interactive) (revert-buffer-no-confirm)))
 
 (provide 'my-common)

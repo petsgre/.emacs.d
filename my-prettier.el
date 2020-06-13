@@ -49,7 +49,7 @@
   :type 'boolean
   :group 'prettier)
 
-(defcustom prettier-semi t
+(defcustom prettier-semi nil
   "Print semicolons at the ends of statements."
   :type 'boolean
   :group 'prettier)
@@ -275,8 +275,8 @@
   :group 'prettier
   :global t
   (if global-prettier-mode
-      (progn (add-hook 'after-change-major-mode-hook #'prettier-add-save-format-hook)
-             (prettier-add-save-format-hook))
+      ;; (progn (add-hook 'after-change-major-mode-hook #'prettier-add-save-format-hook)
+      ;;        (prettier-add-save-format-hook))
     (remove-hook 'after-change-major-mode-hook #'prettier-add-save-format-hook)
     (remove-hook 'before-save-hook 'prettier-format 'local)))
 
