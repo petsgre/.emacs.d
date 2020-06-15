@@ -27,4 +27,10 @@
   (setq counsel-etags-update-interval 60)
   (push "build" counsel-etags-ignore-directories))
 
+;; (use-package lsp-mode
+;;   :hook
+;;   (web-mode . lsp)
+;;   (js2-mode . lsp)
+;;   :commands lsp)
+
 (provide 'my-unknown)

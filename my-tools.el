@@ -76,11 +76,18 @@
   (global-set-key (kbd "s-=") 'er/expand-region))
 
 
-
+;; 集成了很多非常有用的的功能
 (use-package counsel
+  :hook
+  ('counsel-mode . 'dashboard-mode)
   :ensure t
-  )
-
+  :bind
+  (("C-x C-r" . 'counsel-recentf) ;;打开最近的文件
+   ("C-x d" . 'counsel-dired)) ;;打开文件目录，可以在minibuffer中查看
+  :config
+  ;; Integration with `projectile'
+  (with-eval-after-load 'projectile
+    (setq projectile-completion-system 'ivy)))
 
 ;; 项目管理
 (use-package projectile
@@ -91,12 +98,9 @@
   (setq projectile-completion-system 'ivy))
 
 
-
+;; GIT管理工具
 (use-package magit ; TODO key bindings and such
   :ensure t)
-
-;; (use-package lsp-mode
-;;   :commands lsp)
 
 ;; 高亮 TODO
 (use-package hl-todo
@@ -105,7 +109,7 @@
   ;; mode can be explicitly defined using hl-todo-activate-in-modes variable
   :hook (after-init . global-hl-todo-mode))
 
-
+;; 代码检查工具
 (use-package flycheck
   :ensure t
   :init (global-flycheck-mode))
@@ -127,5 +131,9 @@
 ;;             (flycheck-mode t)
 ;;             (when (executable-find "eslint")
 ;;               (flycheck-select-checker 'javascript-eslint))))
+
+;; 在finder中打开
+(use-package reveal-in-osx-finder
+  :ensure t)
 
 (provide 'my-tools)

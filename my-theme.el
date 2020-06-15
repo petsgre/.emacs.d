@@ -8,8 +8,8 @@
 ;;   (load-theme 'vscode-dark-plus t))
 
 
-(add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
+;; (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
 
-(load-theme 'vscode-dark-plus t)
+;; (load-theme 'vscode-dark-plus t)
 
 (provide 'my-theme)

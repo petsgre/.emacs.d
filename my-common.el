@@ -22,6 +22,10 @@
 ;; 高亮当前行
 (global-hl-line-mode 1)
 
+;; 让'_'被视为单词的一部分
+(add-hook 'after-change-major-mode-hook (lambda () 
+                                          (modify-syntax-entry ?_ "w")))
+
 ;; 选中当前区域或单词
 (global-set-key (kbd "s-d") 'mc/mark-next-like-this)
 
