@@ -4,6 +4,9 @@
 ;; 不要导航菜单
 (tool-bar-mode -1)
 
+;; 退出保存buffer
+(desktop-save-mode 1)
+
 ;; 不要滚动条
 (scroll-bar-mode -1)
 

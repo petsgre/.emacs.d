@@ -1,3 +1,4 @@
+;; html标签补全
 (use-package emmet-mode
   :ensure t
   :commands emmet-mode
@@ -6,9 +7,18 @@
   (web-mode  . emmet-mode)
   (css-mode  . emmet-mode))
 
+;; 优先读取node_modules的path
+(use-package add-node-modules-path
+  :ensure t
+  :config
+  ;; automatically run the function when web-mode starts
+  (eval-after-load 'web-mode
+    '(add-hook 'web-mode-hook 'add-node-modules-path)))
+
+;; web-mode
 (use-package web-mode
   :ensure t
-  :mode ("\\.html\\'" "\\.vue\\'" "\\.tsx\\'" )
+  :mode ("\\.html\\'" "\\.vue\\'" "\\.tsx\\'" "\\.js\\'")
   :config
   (setq-default indent-tabs-mode nil)
   (setq web-mode-markup-indent-offset 2)
@@ -23,14 +33,35 @@
   (setq web-mode-content-types-alist
         '(("vue" . "\\.vue\\'"))))
 
-(use-package js2-mode
-  :ensure t
-  :mode (("\\.js\\'" . js2-mode)
-         ("\\.json\\'" . javascript-mode))
-  :config
-  (setq js2-mode-show-parse-errors nil)
-  (setq js2-mode-show-strict-warnings nil))
 
-(add-hook 'js2-mode-hook (lambda () (setq js2-basic-offset 2)))
+;; 代码检查工具
+(use-package flycheck
+  :ensure t
+  :init (global-flycheck-mode))
+(flycheck-add-mode 'javascript-eslint 'js2-mode)
+(flycheck-add-mode 'javascript-eslint 'web-mode)
+
+;; 之前使用这个配置获取node_modules下的路径  现在使用上面的add-node-modules-path
+;; (defun my/use-eslint-from-node-modules ()
+;;   (let* ((root (locate-dominating-file
+;;                 (or (buffer-file-name) default-directory)
+;;                 "node_modules"))
+;;          (eslint (and root
+;;                       (expand-file-name "node_modules/eslint/bin/eslint.js"
+;;                                         root))))
+;;     (when (and eslint (file-executable-p eslint))
+;;       (setq-local flycheck-javascript-eslint-executable eslint))))
+;; (add-hook 'flycheck-mode-hook #'my/use-eslint-from-node-modules)
+
+;; 用来加载js文件，现在用web-mode加载js了
+;; (use-package js2-mode
+;;   :ensure t
+;;   :mode (("\\.js\\'" . js2-mode)
+;;          ("\\.json\\'" . javascript-mode))
+;;   :config
+;;   (setq js2-mode-show-parse-errors nil)
+;;   (setq js2-mode-show-strict-warnings nil))
+;; (add-hook 'js2-mode-hook (lambda () (setq js2-basic-offset 2)))
+;; (add-hook 'scss-mode-hook (lambda () (setq-default css-indent-offset 2)))
 
 (provide 'my-web)

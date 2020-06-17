@@ -1,3 +1,13 @@
+;; GUI打开能获取shell path
+(use-package exec-path-from-shell
+  :ensure t
+  :custom
+  (exec-path-from-shell-check-startup-files nil)
+  :config
+  (push "HISTFILE" exec-path-from-shell-variables)
+  (exec-path-from-shell-initialize))
+
+
 ;; 有道词典，非常有用
 (use-package
   youdao-dictionary
@@ -108,29 +118,6 @@
   ;; global hook activates hl-todo-mode for prog-mode, text-mode
   ;; mode can be explicitly defined using hl-todo-activate-in-modes variable
   :hook (after-init . global-hl-todo-mode))
-
-;; 代码检查工具
-(use-package flycheck
-  :ensure t
-  :init (global-flycheck-mode))
-(flycheck-add-mode 'javascript-eslint 'js2-mode)
-(flycheck-add-mode 'javascript-eslint 'web-mode)
-(defun my/use-eslint-from-node-modules ()
-  (let* ((root (locate-dominating-file
-                (or (buffer-file-name) default-directory)
-                "node_modules"))
-         (eslint (and root
-                      (expand-file-name "node_modules/eslint/bin/eslint.js"
-                                        root))))
-    (when (and eslint (file-executable-p eslint))
-      (setq-local flycheck-javascript-eslint-executable eslint))))
-(add-hook 'flycheck-mode-hook #'my/use-eslint-from-node-modules)
-
-;; (add-hook 'js2-mode-hook
-;;           (defun my-js2-mode-setup ()
-;;             (flycheck-mode t)
-;;             (when (executable-find "eslint")
-;;               (flycheck-select-checker 'javascript-eslint))))
 
 ;; 在finder中打开
 (use-package reveal-in-osx-finder
