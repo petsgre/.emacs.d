@@ -1,3 +1,28 @@
+;;缓存scratch草稿
+(use-package persistent-scratch
+  :ensure t
+  :config
+  (persistent-scratch-autosave-mode 1))
+
+;; lsp 可以使用js ts等语言的server
+(use-package lsp-mode
+    :hook (;; replace XXX-mode with concrete major-mode(e. g. python-mode)
+            (web-mode . lsp)
+            ;; if you want which-key integration
+            (lsp-mode . lsp-enable-which-key-integration))
+    :commands lsp
+    :config
+    (setq lsp-log-io nil)
+    (setq lsp-enable-snippet nil)
+    (setq lsp-enable-symbol-highlighting nil)
+    (setq lsp-client-packages '(lsp-clients)))
+
+;; optionally
+(use-package lsp-ui :commands lsp-ui-mode)
+
+;; 不使用lsp的flychecker
+(setq lsp-diagnostic-package :none)
+
 ;; GUI打开能获取shell path
 (use-package exec-path-from-shell
   :ensure t
@@ -6,7 +31,6 @@
   :config
   (push "HISTFILE" exec-path-from-shell-variables)
   (exec-path-from-shell-initialize))
-
 
 ;; 有道词典，非常有用
 (use-package

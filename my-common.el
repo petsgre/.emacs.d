@@ -1,11 +1,22 @@
 ;; 把光标变成竖线
 (setq-default cursor-type 'bar)
 
+(setq save-interprogram-paste-before-kill t)
+
+(defun delete-line-no-kill ()
+  (interactive)
+  (delete-region
+   (point)
+   (save-excursion (move-end-of-line 1) (point)))
+ (delete-char 1)
+)
+(global-set-key (kbd"C-k") 'delete-line-no-kill)
+
 ;; 不要导航菜单
 (tool-bar-mode -1)
 
 ;; 退出保存buffer
-(desktop-save-mode 1)
+;;(desktop-save-mode 1)
 
 ;; 不要滚动条
 (scroll-bar-mode -1)
