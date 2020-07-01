@@ -12,6 +12,12 @@
 )
 (global-set-key (kbd"C-k") 'delete-line-no-kill)
 
+;; 不生成~备份文件
+(setq make-backup-files nil)
+
+;; 禁止自动换行
+(set-default 'truncate-lines t)
+
 ;; 不要导航菜单
 (tool-bar-mode -1)
 
@@ -174,5 +180,8 @@
             (forward-char pos)))))
 
 (global-set-key (kbd "M-n") 'duplicate-line-or-region)
+
+;; 启动窗口最大化
+(add-to-list 'initial-frame-alist '(fullscreen . maximized))
 
 (provide 'my-common)

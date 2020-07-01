@@ -5,17 +5,17 @@
   (persistent-scratch-autosave-mode 1))
 
 ;; lsp 可以使用js ts等语言的server
-(use-package lsp-mode
-    :hook (;; replace XXX-mode with concrete major-mode(e. g. python-mode)
-            (web-mode . lsp)
-            ;; if you want which-key integration
-            (lsp-mode . lsp-enable-which-key-integration))
-    :commands lsp
-    :config
-    (setq lsp-log-io nil)
-    (setq lsp-enable-snippet nil)
-    (setq lsp-enable-symbol-highlighting nil)
-    (setq lsp-client-packages '(lsp-clients)))
+;; (use-package lsp-mode
+;;     :hook (;; replace XXX-mode with concrete major-mode(e. g. python-mode)
+;;             (web-mode . lsp)
+;;             ;; if you want which-key integration
+;;             (lsp-mode . lsp-enable-which-key-integration))
+;;     :commands lsp
+;;     :config
+;;     (setq lsp-log-io nil)
+;;     (setq lsp-enable-snippet nil)
+;;     (setq lsp-enable-symbol-highlighting nil)
+;;     (setq lsp-client-packages '(lsp-clients)))
 
 ;; optionally
 (use-package lsp-ui :commands lsp-ui-mode)
@@ -70,7 +70,7 @@
     (setq enable-recursive-minibuffers t)
     ;; enable this if you want `swiper' to use it
     ;; (setq search-default-mode #'char-fold-to-regexp)
-    (global-set-key "\C-s" 'swiper)
+    (global-set-key "\C-s" 'swiper-thing-at-point)
     (global-set-key (kbd "C-c C-r") 'ivy-resume)
     (global-set-key (kbd "<f6>") 'ivy-resume)
     (global-set-key (kbd "M-x") 'counsel-M-x)
@@ -145,6 +145,21 @@
 
 ;; 在finder中打开
 (use-package reveal-in-osx-finder
+  :ensure t)
+
+;; 跳转到定义
+(use-package dumb-jump
+  :bind (("M-g o" . dumb-jump-go-other-window)
+         ("M-g j" . dumb-jump-go)
+         ("M-g b" . dumb-jump-back)
+         ("M-g i" . dumb-jump-go-prompt)
+         ("M-g x" . dumb-jump-go-prefer-external)
+         ("M-g z" . dumb-jump-go-prefer-external-other-window))
+  :config (setq dumb-jump-selector 'ivy) ;; (setq dumb-jump-selector 'helm)
+  :ensure)
+
+;; 记住最长用的命令，并放在前面
+(use-package smex
   :ensure t)
 
 (provide 'my-tools)

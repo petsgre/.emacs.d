@@ -18,7 +18,8 @@
 ;; web-mode
 (use-package web-mode
   :ensure t
-  :mode ("\\.html\\'" "\\.vue\\'" "\\.tsx\\'" "\\.js\\'")
+  :mode ("\\.html\\'" "\\.vue\\'" "\\.tsx\\'" "\\.js\\'" "\\.scss\\'" "\\.json\\'" "\\.jsx\\'")
+  ;; :mode ("\\.html\\'" "\\.vue\\'" "\\.tsx\\'" "\\.scss\\'" "\\.json\\'" "\\.jsx\\'")
   :config
   (setq-default indent-tabs-mode nil)
   (setq web-mode-markup-indent-offset 2)
@@ -63,5 +64,27 @@
 ;;   (setq js2-mode-show-strict-warnings nil))
 ;; (add-hook 'js2-mode-hook (lambda () (setq js2-basic-offset 2)))
 ;; (add-hook 'scss-mode-hook (lambda () (setq-default css-indent-offset 2)))
+
+;; 针对js vue 文件 使用tide模式 调用 tsserver进行代码补全和跳转到定义
+(defun setup-tide-mode ()
+  (interactive)
+  (tide-setup)
+  (eldoc-mode +1)
+  (tide-hl-identifier-mode +1)
+  ;; company is an optional dependency. You have to
+  ;; install it separately via package-install
+  ;; `M-x package-install [ret] company`
+  (company-mode +1))
+
+(use-package tide
+  :ensure t
+  :bind (("M-." . tide-jump-to-definition)
+         ("M-," . tide-jump-back))
+  :config
+  (setup-tide-mode)
+  ;; aligns annotation to the right hand side
+  (setq company-tooltip-align-annotations t)
+  (add-hook 'web-mode-hook #'setup-tide-mode))
+
 
 (provide 'my-web)
