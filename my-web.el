@@ -18,9 +18,13 @@
 ;; web-mode
 (use-package web-mode
   :ensure t
-  :mode ("\\.html\\'" "\\.vue\\'" "\\.tsx\\'" "\\.js\\'" "\\.scss\\'" "\\.json\\'" "\\.jsx\\'")
+  ;; :mode ("\\.html\\'" "\\.tsx\\'" "\\.js\\'" "\\.scss\\'" "\\.json\\'" "\\.jsx\\'")
+  :mode ("\\.vue\\'" "\\.html\\'" "\\.tsx\\'" "\\.js\\'" "\\.scss\\'" "\\.json\\'" "\\.jsx\\'")
   ;; :mode ("\\.html\\'" "\\.vue\\'" "\\.tsx\\'" "\\.scss\\'" "\\.json\\'" "\\.jsx\\'")
+  :bind(
+        ("C-,". lsp-find-definition))
   :config
+  (add-hook 'web-mode-hook #'lsp)
   (setq-default indent-tabs-mode nil)
   (setq web-mode-markup-indent-offset 2)
   (setq web-mode-css-indent-offset 2)
@@ -34,13 +38,14 @@
   (setq web-mode-content-types-alist
         '(("vue" . "\\.vue\\'"))))
 
-
 ;; 代码检查工具
 (use-package flycheck
   :ensure t
   :init (global-flycheck-mode))
 (flycheck-add-mode 'javascript-eslint 'js2-mode)
+(flycheck-add-mode 'javascript-eslint 'js-mode)
 (flycheck-add-mode 'javascript-eslint 'web-mode)
+(flycheck-add-mode 'javascript-eslint 'vue-mode)
 
 ;; 之前使用这个配置获取node_modules下的路径  现在使用上面的add-node-modules-path
 ;; (defun my/use-eslint-from-node-modules ()
@@ -69,6 +74,7 @@
 (defun setup-tide-mode ()
   (interactive)
   (tide-setup)
+  (flycheck-mode nil)
   (eldoc-mode +1)
   (tide-hl-identifier-mode +1)
   ;; company is an optional dependency. You have to
@@ -86,5 +92,7 @@
   (setq company-tooltip-align-annotations t)
   (add-hook 'web-mode-hook #'setup-tide-mode))
 
+;; 设置缩进为2个空格
+(setq js-indent-level 2)
 
 (provide 'my-web)

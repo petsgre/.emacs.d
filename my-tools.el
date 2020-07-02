@@ -162,4 +162,8 @@
 (use-package smex
   :ensure t)
 
+;; 用于全局替换修改
+(use-package wgrep
+  :ensure t)
+
 (provide 'my-tools)

@@ -12,6 +12,9 @@
 )
 (global-set-key (kbd"C-k") 'delete-line-no-kill)
 
+;; 全局模式修改自动保存
+(setq wgrep-auto-save-buffer t)
+
 ;; 不生成~备份文件
 (setq make-backup-files nil)
 
