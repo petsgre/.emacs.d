@@ -135,6 +135,7 @@
   :ensure t
   :config)
 
+;; 在当前项目打开目录tree
 (defun open-tree-in-current-project ()
   (interactive)
   (neotree-projectile-action))
@@ -175,15 +176,16 @@
 (use-package wgrep
   :ensure t)
 
-(use-package telega
-  :load-path  "~/telega.el"
-  :commands (telega)
-  :defer t)
+;; 使用emaca打开telegram，由于tdlib还没更到1.6.6 暂时不会搞
+;; (use-package telega
+;;   :load-path  "~/telega.el"
+;;   :commands (telega)
+;;   :defer t)
 
-(setq telega-proxies
-      (list
-       '(:server "127.0.0.1" :port 1081 :enable t :type
-	  (:@type "proxyTypeSocks5"))
-       ))
+;; (setq telega-proxies
+;;       (list
+;;        '(:server "127.0.0.1" :port 1081 :enable t :type
+;; 	  (:@type "proxyTypeSocks5"))
+;;        ))
 
 (provide 'my-tools)
