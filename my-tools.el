@@ -131,6 +131,15 @@
   (define-key projectile-mode-map (kbd "s-p") 'projectile-command-map)
   (setq projectile-completion-system 'ivy))
 
+(use-package neotree
+  :ensure t
+  :config)
+
+(defun open-tree-in-current-project ()
+  (interactive)
+  (neotree-projectile-action))
+
+(global-set-key (kbd "s-b") 'open-tree-in-current-project)
 
 ;; GIT管理工具
 (use-package magit ; TODO key bindings and such
@@ -165,5 +174,16 @@
 ;; 用于全局替换修改
 (use-package wgrep
   :ensure t)
+
+(use-package telega
+  :load-path  "~/telega.el"
+  :commands (telega)
+  :defer t)
+
+(setq telega-proxies
+      (list
+       '(:server "127.0.0.1" :port 1081 :enable t :type
+	  (:@type "proxyTypeSocks5"))
+       ))
 
 (provide 'my-tools)

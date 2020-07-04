@@ -56,7 +56,7 @@
 ;;(global-set-key (kbd "C-M-\\") 'prettier-format)
 
 ;; magit查看每行log
-(global-set-key (kbd "s-b") 'magit-blame-addition)
+(global-set-key (kbd "C-c b") 'magit-blame-addition)
 
 ;; 进入全屏
 (defun fullscreen ()
