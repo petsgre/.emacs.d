@@ -12,6 +12,13 @@
 )
 (global-set-key (kbd"C-k") 'delete-line-no-kill)
 
+;; 快速切换上下buffer
+(global-set-key (kbd"s-{") 'previous-buffer)
+(global-set-key (kbd"s-}") 'next-buffer)
+
+;; 切换buffer时光标高亮动画
+(beacon-mode 1)
+
 ;; 全局模式修改自动保存
 (setq wgrep-auto-save-buffer t)
 

@@ -2,7 +2,8 @@
 
 ;; 添加melpa资源
 (add-to-list 'package-archives
-	     '("melpa" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/"))
+	     '("melpa" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/") t)
+;;	     '("melpa" . "https://melpa.org/packages/") t)
 
 (package-initialize)
 
