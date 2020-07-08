@@ -192,6 +192,6 @@
 (global-set-key (kbd "M-n") 'duplicate-line-or-region)
 
 ;; 启动窗口最大化
-(add-to-list 'initial-frame-alist '(fullscreen . maximized))
+;;(add-to-list 'initial-frame-alist '(fullscreen . maximized))
 
 (provide 'my-common)

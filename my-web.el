@@ -19,8 +19,8 @@
 (use-package web-mode
   :ensure t
   ;; :mode ("\\.html\\'" "\\.tsx\\'" "\\.js\\'" "\\.scss\\'" "\\.json\\'" "\\.jsx\\'")
-  :mode ("\\.vue\\'" "\\.html\\'" "\\.tsx\\'" "\\.js\\'" "\\.scss\\'" "\\.json\\'" "\\.jsx\\'")
   ;; :mode ("\\.html\\'" "\\.vue\\'" "\\.tsx\\'" "\\.scss\\'" "\\.json\\'" "\\.jsx\\'")
+  :mode ("\\.vue\\'" "\\.html\\'" "\\.tsx\\'" "\\.js\\'" "\\.scss\\'" "\\.json\\'" "\\.jsx\\'")
   :bind(
         ("C-,". lsp-find-definition))
   :config
