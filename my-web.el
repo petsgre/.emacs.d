@@ -24,6 +24,8 @@
   :bind(
         ("C-,". lsp-find-definition))
   :config
+  (add-to-list 'web-mode-comment-formats '(("javascript" . "//")
+                                           ("vue" . "//")))
   (add-hook 'web-mode-hook #'lsp)
   (setq-default indent-tabs-mode nil)
   (setq web-mode-markup-indent-offset 2)
