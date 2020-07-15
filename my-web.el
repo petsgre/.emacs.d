@@ -24,6 +24,12 @@
   :bind(
         ("C-,". lsp-find-definition))
   :config
+  (setq web-mode-extra-snippets
+      '(("erb" . (("toto" . "<% toto | %>\n\n<% end %>")))
+        ("vue" . (("vue" . "<template>\n\n</template>\n\n<script>\n\n</script>")
+                  ("debug" . "<?php error_log(__LINE__); ?>")))
+        ))
+  
   (add-to-list 'web-mode-comment-formats '(("javascript" . "//")
                                            ("vue" . "//")))
   (add-hook 'web-mode-hook #'lsp)
