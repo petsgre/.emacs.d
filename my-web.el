@@ -21,8 +21,10 @@
   ;; :mode ("\\.html\\'" "\\.tsx\\'" "\\.js\\'" "\\.scss\\'" "\\.json\\'" "\\.jsx\\'")
   ;; :mode ("\\.html\\'" "\\.vue\\'" "\\.tsx\\'" "\\.scss\\'" "\\.json\\'" "\\.jsx\\'")
   :mode ("\\.vue\\'" "\\.html\\'" "\\.tsx\\'" "\\.js\\'" "\\.scss\\'" "\\.json\\'" "\\.jsx\\'")
-  :bind(
-        ("C-,". lsp-find-definition))
+  :bind(("C-,". lsp-find-definition)
+        ("C-'". completion-at-point))
+  :hook(
+        (web-mode . electric-pair-mode));; 回车括号光标居中
   :config
   (setq web-mode-extra-snippets
       '(("erb" . (("toto" . "<% toto | %>\n\n<% end %>")))
