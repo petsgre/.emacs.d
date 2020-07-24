@@ -7,6 +7,20 @@
   (web-mode  . emmet-mode)
   (css-mode  . emmet-mode))
 
+;; prettier
+(use-package prettier-js
+  :ensure t
+  )
+
+(defun format-with-prettier ()
+  (interactive)
+  (prettier-js)
+  (princ "格式化好了，牛逼666")
+  )
+
+;; 格式化快捷键
+(global-set-key (kbd "C-M-\\") 'format-with-prettier)
+
 ;; 优先读取node_modules的path
 (use-package add-node-modules-path
   :ensure t
@@ -14,6 +28,9 @@
   ;; automatically run the function when web-mode starts
   (eval-after-load 'web-mode
     '(add-hook 'web-mode-hook 'add-node-modules-path)))
+
+(use-package lsp-mode
+  :ensure t)
 
 ;; web-mode
 (use-package web-mode
@@ -33,13 +50,14 @@
         ))
   
   (add-to-list 'web-mode-comment-formats '(("javascript" . "//")
+                                           ("js" . "//")
                                            ("vue" . "//")))
   (add-hook 'web-mode-hook #'lsp)
   (setq-default indent-tabs-mode nil)
   (setq web-mode-markup-indent-offset 2)
   (setq web-mode-css-indent-offset 2)
   (setq web-mode-code-indent-offset 2)
-;;  (add-hook 'web-mode-hook 'prettier-js-mode)
+  ;; (add-hook 'web-mode-hook 'prettier-js-mode)
   (setq web-mode-enable-current-element-highlight t)
   (setq web-mode-enable-css-colorization t)
   ;; (set-face-attribute 'web-mode-html-tag-face nil :foreground "royalblue")
@@ -47,6 +65,11 @@
   ;; (set-face-attribute 'web-mode-doctype-face nil :foreground "lightskyblue")
   (setq web-mode-content-types-alist
         '(("vue" . "\\.vue\\'"))))
+
+(setq-default web-mode-comment-formats
+              '(("java"       . "/*")
+                ("javascript" . "//")
+                ("php"        . "/*")))
 
 ;; 代码检查工具
 (use-package flycheck

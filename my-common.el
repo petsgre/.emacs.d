@@ -1,6 +1,8 @@
 ;; 把光标变成竖线
 (setq-default cursor-type 'bar)
 
+;;(setq electric-layout-rules '((?\{ . around) (?\} . around)))
+
 (setq save-interprogram-paste-before-kill t)
 
 (defun delete-line-no-kill ()
@@ -11,6 +13,13 @@
  (delete-char 1)
 )
 (global-set-key (kbd"C-k") 'delete-line-no-kill)
+
+(use-package diff-hl
+  :ensure t
+  )
+(global-diff-hl-mode)
+(add-hook 'magit-pre-refresh-hook 'diff-hl-magit-pre-refresh)
+(add-hook 'magit-post-refresh-hook 'diff-hl-magit-post-refresh)
 
 ;; 快速切换上下buffer
 (global-set-key (kbd"s-{") 'previous-buffer)
@@ -58,9 +67,6 @@
 
 ;; 选中当前区域或单词
 (global-set-key (kbd "s-d") 'mc/mark-next-like-this)
-
-;; 格式化快捷键
-;;(global-set-key (kbd "C-M-\\") 'prettier-format)
 
 ;; magit查看每行log
 (global-set-key (kbd "C-c b") 'magit-blame-addition)
@@ -133,8 +139,7 @@
 (global-set-key [\M-\S-down] 'move-text-down)
 
 ;; 在当前窗口显示buffer list
-(global-set-key (kbd "C-x C-b") 'ibuffer)
-
+(global-set-key (kbd "C-x C-b") 'counsel-ibuffer)
 
 ;; 注释快捷键
 (global-set-key (kbd "C-x C-/") 'comment-or-uncomment-region)
@@ -155,10 +160,10 @@
   (call-process-shell-command (format "node %s/node_modules/.bin/prettier --no-semi false --no-editorconfig --write %s"
                                       (projectile-project-root)
                                       (buffer-file-name))))
-(eval-after-load "web-mode" '(progn
-                               (define-key web-mode-map (kbd "C-M-\\") 'jester/prettier-js-file-1)))
+;; (eval-after-load "web-mode" '(progn
+;;                                (define-key web-mode-map (kbd "C-M-\\") 'jester/prettier-js-file-1)))
 
-(global-set-key (kbd "C-M-\\") 'jester/prettier-js-file-1)
+;;(global-set-key (kbd "C-M-\\") 'jester/prettier-js-file-1)
 
 ;; 刷新buffer无需confirm
 (defun revert-buffer-no-confirm ()

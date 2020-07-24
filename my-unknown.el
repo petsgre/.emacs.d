@@ -13,8 +13,6 @@
 ;; 让光标无法离开视线
 (setq mouse-yank-at-point nil)
 
-
-
 ;; (use-package counsel-etags
 ;;   :ensure t
 ;;   :bind (("C-]" . counsel-etags-find-tag-at-point))
@@ -60,10 +58,15 @@
 ;;   (princ "Enter Radius: ")
 ;;   )
 
-;; (defun testxxx ()
-;;   (interactive)
-;;   (princ "Enter Radius: ")
-;;   )
+(defun testxxx ()
+  (interactive)
+  (princ "Enter Radius: ")
+  ;; (ibuffer)
+  ;; (split-window-right)
+  (other-window 2)
+  )
+;;(global-set-key (kbd "C-x C-b") 'testxxx)
+;;(global-set-key (kbd "C-x b") 'counsel-ibuffer)
 
 ;; (use-package smart-input-source
 ;;   :init

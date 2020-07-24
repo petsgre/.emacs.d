@@ -1,3 +1,4 @@
+
 ;;缓存scratch草稿
 (use-package persistent-scratch
   :ensure t
@@ -45,6 +46,16 @@
 (use-package which-key
   :ensure t
   :config (which-key-mode))
+
+;; (use-package ivy
+;;   :ensure t)
+
+;; (use-package ivy-rich
+;;   :ensure t
+;;   :after (ivy)
+;;   )
+;; (setcdr (assq t ivy-format-functions-alist) #'ivy-format-function-line)
+;; (ivy-rich-mode 1)
 
 
 ;; 使用swiper在底部显示待选项，可以用 C n C p快速切换

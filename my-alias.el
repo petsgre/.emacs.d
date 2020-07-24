@@ -5,7 +5,8 @@
 					    ("8zl" "zilongshanren")
 					    ;; Tudi
 					    ("8lxy" "lixinyang")
-					    ("zx" "git clone xxx")
+					    ;;("zx" "git clone xxx")
+					    ("zx" "console.log()")
 					    ))
 
 
