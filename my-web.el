@@ -45,7 +45,7 @@
   :config
   (setq web-mode-extra-snippets
       '(("erb" . (("toto" . "<% toto | %>\n\n<% end %>")))
-        ("vue" . (("vue" . "<template>\n\n</template>\n\n<script>\n\n</script>")
+        ("vue" . (("vue" . "<template>\n<div>\n\n</div>\n</template>\n\n<script type=\"text/jsx\">\n\n</script>\n\n<style lang=\"scss\">\n\n</style>")
                   ("debug" . "<?php error_log(__LINE__); ?>")))
         ))
   
@@ -53,6 +53,11 @@
                                            ("js" . "//")
                                            ("vue" . "//")))
   (add-hook 'web-mode-hook #'lsp)
+  (add-hook 'web-mode-hook
+  (lambda ()
+  (if (equal web-mode-content-type "javascript")
+  (web-mode-set-content-type "jsx")
+  (message "now set to: %s" web-mode-content-type))))
   (setq-default indent-tabs-mode nil)
   (setq web-mode-markup-indent-offset 2)
   (setq web-mode-css-indent-offset 2)
