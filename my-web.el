@@ -43,11 +43,11 @@
   :hook(
         (web-mode . electric-pair-mode));; 回车括号光标居中
   :config
-  (setq web-mode-extra-snippets
-      '(("erb" . (("toto" . "<% toto | %>\n\n<% end %>")))
-        ("vue" . (("vue" . "<template>\n<div>\n\n</div>\n</template>\n\n<script type=\"text/jsx\">\n\n</script>\n\n<style lang=\"scss\">\n\n</style>")
-                  ("debug" . "<?php error_log(__LINE__); ?>")))
-        ))
+  ;; (setq web-mode-extra-snippets
+  ;;     '(("erb" . (("toto" . "<% toto | %>\n\n<% end %>")))
+  ;;       ("vue" . (("vue" . "<template>\n<div>\n\n</div>\n</template>\n\n<script type=\"text/jsx\">\n\n</script>\n\n<style lang=\"scss\">\n\n</style>")
+  ;;                 ("debug" . "<?php error_log(__LINE__); ?>")))
+  ;;       ))
   
   (add-to-list 'web-mode-comment-formats '(("javascript" . "//")
                                            ("js" . "//")

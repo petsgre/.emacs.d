@@ -186,4 +186,8 @@
 ;; 	  (:@type "proxyTypeSocks5"))
 ;;        ))
 
+
+(use-package vterm
+  :ensure t)
+
 (provide 'my-tools)
