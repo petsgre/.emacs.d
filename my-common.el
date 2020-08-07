@@ -5,6 +5,10 @@
 
 (setq save-interprogram-paste-before-kill t)
 
+(recentf-mode 1)
+(setq recentf-max-menu-items 50)
+(setq recentf-max-saved-items 50)
+
 (defun delete-line-no-kill ()
   (interactive)
   (delete-region
