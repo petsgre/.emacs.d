@@ -9,6 +9,8 @@
 (setq recentf-max-menu-items 50)
 (setq recentf-max-saved-items 50)
 
+(global-set-key (kbd"C-x j") 'dired-jump)
+
 (defun delete-line-no-kill ()
   (interactive)
   (delete-region
