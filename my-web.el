@@ -29,15 +29,25 @@
   (eval-after-load 'web-mode
     '(add-hook 'web-mode-hook 'add-node-modules-path)))
 
+(use-package css-mode
+  :ensure t
+  :mode "\\.css\\'"
+  :config
+  (setq css-indent-offset 2)
+  (add-hook 'scss-mode-hook #'electric-pair-mode)
+  )
+
 (use-package lsp-mode
-  :ensure t)
+  :ensure t
+  :hook (
+         (css-mode . lsp)))
 
 ;; web-mode
 (use-package web-mode
   :ensure t
   ;; :mode ("\\.html\\'" "\\.tsx\\'" "\\.js\\'" "\\.scss\\'" "\\.json\\'" "\\.jsx\\'")
-  ;; :mode ("\\.html\\'" "\\.vue\\'" "\\.tsx\\'" "\\.scss\\'" "\\.json\\'" "\\.jsx\\'")
-  :mode ("\\.vue\\'" "\\.html\\'" "\\.tsx\\'" "\\.js\\'" "\\.scss\\'" "\\.json\\'" "\\.jsx\\'")
+  ;; :mode ("\\.html\\'" "\\.vue\\'" "\\.tsx\\'" "\\.js\\'" "\\.scss\\'" "\\.json\\'" "\\.jsx\\'")
+  :mode ("\\.vue\\'" "\\.html\\'" "\\.tsx\\'" "\\.js\\'" "\\.json\\'" "\\.jsx\\'")
   :bind(("C-,". lsp-find-definition)
         ("C-'". completion-at-point))
   :hook(

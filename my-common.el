@@ -9,7 +9,7 @@
 (setq recentf-max-menu-items 50)
 (setq recentf-max-saved-items 50)
 
-(global-set-key (kbd"C-x j") 'dired-jump)
+(global-set-key (kbd"C-x C-j") 'dired-jump)
 
 (defun delete-line-no-kill ()
   (interactive)
@@ -175,7 +175,7 @@
 (defun revert-buffer-no-confirm ()
     "Revert buffer without confirmation."
     (interactive) (revert-buffer t t))
-(global-set-key (kbd "C-x C-j") (lambda () (interactive) (revert-buffer-no-confirm)))
+(global-set-key (kbd "C-x j") (lambda () (interactive) (revert-buffer-no-confirm)))
 
 ;; 复制当前行或者区域
 (defun duplicate-line-or-region (&optional n)
