@@ -99,5 +99,11 @@
 ;;   (add-hook 'smart-input-source-set-english-hook #'testxxx)
 ;;   )
 
+(use-package telega
+  :load-path  "~/telega.el"
+  :commands (telega)
+  :defer t)
+
+;;(telega-notifications-mode 1)
 
 (provide 'my-unknown)

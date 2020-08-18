@@ -3,6 +3,8 @@
 
 ;;(setq electric-layout-rules '((?\{ . around) (?\} . around)))
 
+(setq ediff-split-window-function 'split-window-horizontally)
+
 (setq save-interprogram-paste-before-kill t)
 
 (recentf-mode 1)
