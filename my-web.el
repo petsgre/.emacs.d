@@ -86,6 +86,22 @@
                 ("javascript" . "//")
                 ("php"        . "/*")))
 
+(setq web-mode-content-types-alist
+      '(("vue" . "\\.vue\\'")))
+
+(defun my/web-vue-setup()
+  (setq web-mode-indent-level 2)
+  (setq web-mode-markup-indent-offset 2)
+  (setq web-mode-css-indent-offset 2)
+  (setq web-mode-code-indent-offset 2)
+  (setq web-mode-style-padding 0
+        web-mode-script-padding 0))
+
+(add-hook 'web-mode-hook
+          (lambda ()
+            (cond ((equal web-mode-content-type "vue")
+                   (my/web-vue-setup)))))
+
 ;; 代码检查工具
 (use-package flycheck
   :ensure t

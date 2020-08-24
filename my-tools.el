@@ -190,4 +190,9 @@
 (use-package vterm
   :ensure t)
 
+(use-package fzf
+  :ensure t
+  :bind(("M-p" . fzf-git-files))
+)
+
 (provide 'my-tools)
