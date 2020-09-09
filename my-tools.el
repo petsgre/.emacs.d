@@ -85,6 +85,68 @@
     (global-set-key (kbd "C-S-o") 'counsel-rhythmbox)
     (define-key minibuffer-local-map (kbd "C-r") 'counsel-minibuffer-history)
     ))
+
+;; 拼音首字母搜索，还不能用，测试不通过
+(require 'pinyinlib)
+
+(use-package pyim
+  :ensure t
+  :after ivy
+  :commands eh-ivy-cregexp
+  :init
+  (setq pyim-default-scheme   'xiaohe-shuangpin
+        ivy-re-builders-alist '((t . eh-ivy-cregexp)))
+  :config
+  (defun eh-ivy-cregexp (str)
+    (let ((x (ivy--regex-ignore-order str))
+          (case-fold-search nil))
+      (if (listp x)
+          (mapcar (lambda (y)
+                    (if (cdr y)
+                        (list (if (equal (car y) "")
+                                  ""
+                                (pyim-cregexp-build (car y)))
+                              (cdr y))
+                      (list (pyim-cregexp-build (car y)))))
+                  x)
+        (pyim-cregexp-build x)))))
+
+(use-package pinyinlib
+  :ensure t
+  :commands pinyinlib-build-regexp-string
+  :init
+    (defun my-pinyinlib-build-regexp-string (str)
+      (cond ((equal str ".*")
+             ".*")
+            (t
+             (pinyinlib-build-regexp-string str t))))
+
+    (defun my-pinyin-regexp-helper (str)
+      (cond ((equal str " ")
+             ".*")
+            ((equal str "")
+             nil)
+            (t
+             str)))
+
+    (defun pinyin-to-utf8 (str)
+      (cond ((equal 0 (length str))
+             nil)
+            ((equal (substring str 0 1) ":")
+             (mapconcat 'my-pinyinlib-build-regexp-string
+                        (remove nil (mapcar 'my-pinyin-regexp-helper
+                                            (split-string
+                                             (replace-regexp-in-string ":" "" str ) "")))
+                        ""))
+            nil))
+
+    (defun re-builder-pinyin (str)
+      (or (pinyin-to-utf8 str)
+          (ivy--regex-plus str)))
+
+    (setq ivy-re-builders-alist
+          '((t . re-builder-pinyin))))
+
 ;; 自动完成
 (use-package auto-complete
   :ensure t
@@ -190,9 +252,11 @@
 (use-package vterm
   :ensure t)
 
+;; 非常有用的模糊搜索 fuzzy search
 (use-package fzf
   :ensure t
-  :bind(("M-p" . fzf-git-files))
+  :bind(("M-p" . fzf-git-files)
+        ("s-F" . fzf-git-grep))
 )
 
 (provide 'my-tools)

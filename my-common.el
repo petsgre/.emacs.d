@@ -6,6 +6,8 @@
 (setq ediff-split-window-function 'split-window-horizontally)
 
 (setq save-interprogram-paste-before-kill t)
+;; org打开缩进
+(setq org-startup-indented t)
 
 (recentf-mode 1)
 (setq recentf-max-menu-items 50)
@@ -49,7 +51,7 @@
 (tool-bar-mode -1)
 
 ;; 退出保存buffer
-;;(desktop-save-mode 1)
+;; (desktop-save-mode 1)
 
 ;; 不要滚动条
 (scroll-bar-mode -1)
