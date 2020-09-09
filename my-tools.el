@@ -148,13 +148,13 @@
           '((t . re-builder-pinyin))))
 
 ;; 自动完成
-(use-package auto-complete
-  :ensure t
-  :init
-  (progn
-    (ac-config-default)
-    (global-auto-complete-mode t)
-    ))
+;; (use-package auto-complete
+;;   :ensure t
+;;   :init
+;;   (progn
+;;     (ac-config-default)
+;;     (global-auto-complete-mode t)
+;;     ))
 
 ;; 添加redo undo 树
 (use-package undo-tree
@@ -237,10 +237,11 @@
   :ensure t)
 
 ;; 使用emaca打开telegram，由于tdlib还没更到1.6.6 暂时不会搞
-;; (use-package telega
-;;   :load-path  "~/telega.el"
-;;   :commands (telega)
-;;   :defer t)
+(use-package telega
+  :load-path  "~/telega.el"
+  :commands (telega)
+  :defer t)
+;; (telega-notifications-mode 1)
 
 ;; (setq telega-proxies
 ;;       (list
@@ -248,7 +249,7 @@
 ;; 	  (:@type "proxyTypeSocks5"))
 ;;        ))
 
-
+;; 好用的终端 相比于 term e/shell
 (use-package vterm
   :ensure t)
 
@@ -256,7 +257,13 @@
 (use-package fzf
   :ensure t
   :bind(("M-p" . fzf-git-files)
-        ("s-F" . fzf-git-grep))
-)
+        ("s-F" . fzf-git-grep)))
+
+(use-package yasnippet
+  :ensure t
+  :config
+  (yas-global-mode 1)
+  (yas-reload-all)
+  (add-hook 'prog-mode-hook #'yas-minor-mode))
 
 (provide 'my-tools)

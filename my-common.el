@@ -9,10 +9,12 @@
 ;; org打开缩进
 (setq org-startup-indented t)
 
+;; 最近文件列表
 (recentf-mode 1)
 (setq recentf-max-menu-items 50)
 (setq recentf-max-saved-items 50)
 
+;; 返回上级目录
 (global-set-key (kbd"C-x C-j") 'dired-jump)
 
 (defun delete-line-no-kill ()
