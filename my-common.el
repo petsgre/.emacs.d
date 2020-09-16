@@ -166,12 +166,12 @@
 ;; (global-prettier-mode 1)
 
 ;; 直接使用prettier命令
-(defun jester/prettier-js-file-1 ()
-  "Call prettier on current file."
-  (interactive)
-  (call-process-shell-command (format "node %s/node_modules/.bin/prettier --no-semi false --no-editorconfig --write %s"
-                                      (projectile-project-root)
-                                      (buffer-file-name))))
+;; (defun jester/prettier-js-file-1 ()
+;;   "Call prettier on current file."
+;;   (interactive)
+;;   (call-process-shell-command (format "node %s/node_modules/.bin/prettier --no-semi false --no-editorconfig --write %s"
+;;                                       (projectile-project-root)
+;;                                       (buffer-file-name))))
 ;; (eval-after-load "web-mode" '(progn
 ;;                                (define-key web-mode-map (kbd "C-M-\\") 'jester/prettier-js-file-1)))
 

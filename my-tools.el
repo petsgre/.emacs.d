@@ -148,13 +148,13 @@
           '((t . re-builder-pinyin))))
 
 ;; 自动完成
-;; (use-package auto-complete
-;;   :ensure t
-;;   :init
-;;   (progn
-;;     (ac-config-default)
-;;     (global-auto-complete-mode t)
-;;     ))
+(use-package auto-complete
+  :ensure t
+  :init
+  (progn
+    (ac-config-default)
+    (global-auto-complete-mode t)
+    ))
 
 ;; 添加redo undo 树
 (use-package undo-tree
