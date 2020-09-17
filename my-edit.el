@@ -15,4 +15,9 @@
   :ensure t 
   :hook ('prog-mode . 'smartparens-global-mode))
 
+;; 修改两端
+(add-to-list 'load-path "~/emacs-surround")
+(require 'emacs-surround)
+(global-set-key (kbd "C-q") 'emacs-surround)
+
 (provide 'my-edit)

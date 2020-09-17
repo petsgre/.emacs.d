@@ -1,13 +1,27 @@
 ;; 把光标变成竖线
 (setq-default cursor-type 'bar)
 
+(org-babel-do-load-languages
+      'org-babel-load-languages
+      '((emacs-lisp . t)
+        ;; (ruby . t)
+        ;; (ditaa . t)
+        ;; (python . t)
+        (js . t)
+        ;; (sh . t)
+        ;; (latex . t)
+        ;; (plantuml . t)
+        ;; (R . t)
+	)
+      )
+
 ;;(setq electric-layout-rules '((?\{ . around) (?\} . around)))
 
 (setq ediff-split-window-function 'split-window-horizontally)
 
 (setq save-interprogram-paste-before-kill t)
 ;; org打开缩进
-(setq org-startup-indented t)
+;; (setq org-startup-indented t)
 
 ;; 最近文件列表
 (recentf-mode 1)
