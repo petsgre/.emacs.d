@@ -266,4 +266,14 @@
   (yas-reload-all)
   (add-hook 'prog-mode-hook #'yas-minor-mode))
 
+;; 一种查看目录的方式
+;; (use-package ranger
+;;   :ensure t)
+
+;; 彩虹猫
+(use-package nyan-mode
+  :ensure t
+  :init
+(nyan-mode t))
+
 (provide 'my-tools)
