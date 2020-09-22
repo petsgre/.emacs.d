@@ -1,1 +1,17 @@
 TAGS
+.cache/
+.persistent-scratch
+abbrev_defs
+ac-comphist.dat
+amx-items
+elpa/
+ido.last
+projectile-bookmarks.eld
+projectile.cache
+quelpa/
+recentf
+snippets/
+tramp
+transient/
+tutorial/
+url/
