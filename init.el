@@ -1,4 +1,4 @@
-(add-to-list 'load-path "~/.emacs.d/emacs-config")
+(add-to-list 'load-path "~/.emacs.d/lisp")
 
 (require 'my-init)
 (require 'my-common)

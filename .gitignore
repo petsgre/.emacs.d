@@ -1,6 +1,7 @@
 TAGS
 .cache/
 .persistent-scratch
+.lsp-session-v1
 abbrev_defs
 ac-comphist.dat
 amx-items
