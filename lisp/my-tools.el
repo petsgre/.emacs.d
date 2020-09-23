@@ -80,7 +80,9 @@
     (global-set-key (kbd "<f2> u") 'counsel-unicode-char)
     (global-set-key (kbd "C-c g") 'counsel-git)
     (global-set-key (kbd "C-c j") 'counsel-git-grep)
-    (global-set-key (kbd "C-c k") 'counsel-ag)
+    (global-set-key (kbd "C-c k") 'counsel-rg)
+    (global-set-key (kbd "C-c i") 'counsel-projectile-rg)
+    (global-set-key (kbd "C-c o") 'counsel-projectile-git-grep)
     (global-set-key (kbd "C-x l") 'counsel-locate)
     (global-set-key (kbd "C-S-o") 'counsel-rhythmbox)
     (define-key minibuffer-local-map (kbd "C-r") 'counsel-minibuffer-history)
@@ -275,5 +277,14 @@
   :ensure t
   :init
 (nyan-mode t))
+
+(add-hook 'org-mode-hook #'valign-mode)
+
+(use-package counsel-projectile
+  :ensure t
+  :config
+  (projectile-mode))
+(define-key projectile-mode-map (kbd "s-p") 'projectile-command-map)
+(define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
 
 (provide 'my-tools)

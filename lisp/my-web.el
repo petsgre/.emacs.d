@@ -47,7 +47,7 @@
   :ensure t
   ;; :mode ("\\.html\\'" "\\.tsx\\'" "\\.js\\'" "\\.scss\\'" "\\.json\\'" "\\.jsx\\'")
   ;; :mode ("\\.html\\'" "\\.vue\\'" "\\.tsx\\'" "\\.js\\'" "\\.scss\\'" "\\.json\\'" "\\.jsx\\'")
-  :mode ("\\.vue\\'" "\\.html\\'" "\\.tsx\\'" "\\.js\\'" "\\.json\\'" "\\.jsx\\'")
+  :mode ("\\.vue\\'" "\\.html\\'" "\\.tsx\\'" "\\.ts\\'" "\\.js\\'" "\\.json\\'" "\\.jsx\\'")
   :bind(("C-,". lsp-find-definition)
         ("C-'". completion-at-point))
   :hook(

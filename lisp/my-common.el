@@ -225,4 +225,8 @@
 ;; 启动窗口最大化
 ;;(add-to-list 'initial-frame-alist '(fullscreen . maximized))
 
+;; 窗口移动
+(global-set-key (kbd "s-[")  'windmove-left)
+(global-set-key (kbd "s-]") 'windmove-right)
+
 (provide 'my-common)
