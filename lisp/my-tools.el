@@ -6,7 +6,9 @@
   (persistent-scratch-autosave-mode 1))
 
 ;; optionally lsp-ui 暂时有bug，全屏会出现一个黑屏
-;;(use-package lsp-ui :commands lsp-ui-mode)
+;; (use-package lsp-ui
+;;   :ensure t
+;;   :commands lsp-ui-mode)
 
 ;; 不使用lsp的flychecker
 (setq lsp-diagnostic-package :none)
@@ -81,8 +83,8 @@
     (global-set-key (kbd "C-c g") 'counsel-git)
     (global-set-key (kbd "C-c j") 'counsel-git-grep)
     (global-set-key (kbd "C-c k") 'counsel-rg)
-    (global-set-key (kbd "C-c i") 'counsel-projectile-rg)
-    (global-set-key (kbd "C-c o") 'counsel-projectile-git-grep)
+    (global-set-key (kbd "C-c o") 'counsel-projectile-rg)
+    (global-set-key (kbd "C-c i") 'counsel-projectile-git-grep)
     (global-set-key (kbd "C-x l") 'counsel-locate)
     (global-set-key (kbd "C-S-o") 'counsel-rhythmbox)
     (define-key minibuffer-local-map (kbd "C-r") 'counsel-minibuffer-history)
@@ -169,7 +171,9 @@
 (use-package expand-region
   :ensure t
   :config
-  (global-set-key (kbd "s-=") 'er/expand-region))
+  (global-set-key (kbd "s-=") 'er/expand-region)
+  (global-set-key (kbd "C-c d") 'er/expand-region)
+  (global-set-key (kbd "C-=") 'er/expand-region))
 
 
 ;; 集成了很多非常有用的的功能
@@ -286,5 +290,10 @@
   (projectile-mode))
 (define-key projectile-mode-map (kbd "s-p") 'projectile-command-map)
 (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
+
+;; (use-package popwin
+;;   :ensure t
+;;   :config
+;;   (popwin-mode 1))
 
 (provide 'my-tools)

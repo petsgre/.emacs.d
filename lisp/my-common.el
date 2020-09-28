@@ -14,8 +14,18 @@
         ;; (R . t)
 	)
       )
-
 ;;(setq electric-layout-rules '((?\{ . around) (?\} . around)))
+
+;; macOS 复制到系统剪切板
+ (defun copy-from-osx () 
+ (shell-command-to-string "pbpaste")) 
+ (defun paste-to-osx (text &optional push) 
+ (let ((process-connection-type nil)) 
+ (let ((proc (start-process"pbcopy" "*Messages*" "pbcopy"))) 
+ (process-send-string proc text) 
+ (process-send-eof proc)))) 
+ (setq interprogram-cut-function 'paste-to-osx) 
+ (setq interprogram-paste-function 'copy-from-osx) 
 
 (setq ediff-split-window-function 'split-window-horizontally)
 
@@ -25,8 +35,8 @@
 
 ;; 最近文件列表
 (recentf-mode 1)
-(setq recentf-max-menu-items 50)
-(setq recentf-max-saved-items 50)
+(setq recentf-max-menu-items 150)
+(setq recentf-max-saved-items 150)
 
 ;; 返回上级目录
 (global-set-key (kbd"C-x C-j") 'dired-jump)

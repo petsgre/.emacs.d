@@ -46,7 +46,7 @@
 (use-package web-mode
   :ensure t
   ;; :mode ("\\.html\\'" "\\.tsx\\'" "\\.js\\'" "\\.scss\\'" "\\.json\\'" "\\.jsx\\'")
-  ;; :mode ("\\.html\\'" "\\.vue\\'" "\\.tsx\\'" "\\.js\\'" "\\.scss\\'" "\\.json\\'" "\\.jsx\\'")
+  ;; :mode ("\\.vue\\'" "\\.html\\'" "\\.ts\\'" "\\.js\\'" "\\.json\\'" "\\.jsx\\'")
   :mode ("\\.vue\\'" "\\.html\\'" "\\.tsx\\'" "\\.ts\\'" "\\.js\\'" "\\.json\\'" "\\.jsx\\'")
   :bind(("C-,". lsp-find-definition)
         ("C-'". completion-at-point))
@@ -55,6 +55,8 @@
   :config  
   (add-to-list 'web-mode-comment-formats '(("javascript" . "//")
                                            ("js" . "//")
+                                           ("ts" . "//")
+                                           ("tsx" . "//")
                                            ("vue" . "//")))
   (add-hook 'web-mode-hook #'lsp)
   (add-hook 'web-mode-hook
@@ -78,6 +80,9 @@
 (setq-default web-mode-comment-formats
               '(("java"       . "/*")
                 ("javascript" . "//")
+                ("ts" . "//")
+                ("tsx" . "//")
+                ("typescript" . "//")
                 ("php"        . "/*")))
 
 (setq web-mode-content-types-alist
@@ -146,12 +151,6 @@
          ("M-," . tide-jump-back))
   :config
   (setup-tide-mode)
-  ;; aligns annotation to the right hand side
-  (setq company-tooltip-align-annotations t)
   (add-hook 'web-mode-hook #'setup-tide-mode))
-
-;; 设置缩进为2个空格
-(setq js-indent-level 2)
-
 
 (provide 'my-web)
