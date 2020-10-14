@@ -296,4 +296,14 @@
 ;;   :config
 ;;   (popwin-mode 1))
 
+
+(use-package ox-reveal
+  :ensure t
+  :config
+  (global-set-key [(f12)] 'org-reveal-export-to-html-and-browse)
+  (reveal-mode 1))
+
+(setq org-reveal-root "https://cdn.jsdelivr.net/npm/reveal.js")
+(setq org-reveal-mathjax t)
+
 (provide 'my-tools)
