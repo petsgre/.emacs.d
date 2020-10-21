@@ -1,4 +1,3 @@
-
 ;;缓存scratch草稿
 (use-package persistent-scratch
   :ensure t
@@ -305,5 +304,9 @@
 
 (setq org-reveal-root "https://cdn.jsdelivr.net/npm/reveal.js")
 (setq org-reveal-mathjax t)
+
+;; 转换org to markdown
+(use-package ox-gfm
+  :ensure t)
 
 (provide 'my-tools)

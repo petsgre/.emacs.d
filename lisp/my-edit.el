@@ -20,4 +20,9 @@
 (require 'emacs-surround)
 (global-set-key (kbd "C-q") 'emacs-surround)
 
+(use-package editorconfig
+  :ensure t
+  :config
+  (editorconfig-mode 1))
+
 (provide 'my-edit)

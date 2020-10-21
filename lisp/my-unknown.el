@@ -34,5 +34,9 @@
   (other-window 2)
   )
 
+;; 据说是打开大文件的 view large file
+(use-package vlf
+  :ensure t)
+
 
 (provide 'my-unknown)
