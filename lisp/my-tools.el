@@ -275,12 +275,6 @@
 ;; (use-package ranger
 ;;   :ensure t)
 
-;; 彩虹猫
-(use-package nyan-mode
-  :ensure t
-  :init
-(nyan-mode t))
-
 (add-hook 'org-mode-hook #'valign-mode)
 
 (use-package counsel-projectile

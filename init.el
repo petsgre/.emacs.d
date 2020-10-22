@@ -7,6 +7,7 @@
 (require 'my-edit)
 (require 'my-backend)
 (require 'my-unknown)
+(require 'my-modeline)
 
 (require 'my-alias)
 (require 'my-theme)

@@ -118,8 +118,8 @@
 ;;(fset yes-or-no-p 'y-or-n-p)
 
 ;; 显示行号
-(global-linum-mode 1)
-(setq linum-format "%d:")
+;; (global-linum-mode 1)
+;; (setq linum-format "%d:")
 ;; 行号开启
 ;; (add-hook 'prog-mode-hook display-line-numbers)
 
