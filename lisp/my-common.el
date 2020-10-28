@@ -115,7 +115,7 @@
 (global-set-key (kbd "<s-return>") 'fullscreen)
 
 ;; 将询问语改成 y和n简写
-;;(fset yes-or-no-p 'y-or-n-p)
+(fset 'yes-or-no-p 'y-or-n-p)
 
 ;; 显示行号
 ;; (global-linum-mode 1)
@@ -239,4 +239,19 @@
 (global-set-key (kbd "s-[")  'windmove-left)
 (global-set-key (kbd "s-]") 'windmove-right)
 
+
+;;防止页面滚动时跳动， scroll-margin 3 可以在靠近屏幕边沿
+;;3行时就开始滚动，可以很好的看到上下文
+;; (setq scroll-margin 3
+;;       scroll-conservatively 10000)
+
+;;支持emacs和外部程序的拷贝粘贴
+(setq x-select-enable-clipboard t)
+
+;;让 dired 可以递归的拷贝和删除目录
+(setq dired-recursive-copies 'top)
+(setq dired-recursive-deletes 'top)
+
+;;设置光标不闪
+(blink-cursor-mode 1)
 (provide 'my-common)
