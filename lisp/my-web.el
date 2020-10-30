@@ -55,7 +55,7 @@
   :config  
   (add-to-list 'web-mode-comment-formats '(("javascript" . "//")
                                            ("js" . "//")
-                                           ("ts" . "//")
+                                           ;;("ts" . "//")
                                            ("tsx" . "//")
                                            ("vue" . "//")))
   (add-hook 'web-mode-hook #'lsp)
@@ -77,13 +77,6 @@
   (setq web-mode-content-types-alist
         '(("vue" . "\\.vue\\'"))))
 
-(setq-default web-mode-comment-formats
-              '(("java"       . "/*")
-                ("javascript" . "//")
-                ("ts" . "//")
-                ("tsx" . "//")
-                ("typescript" . "//")
-                ("php"        . "/*")))
 
 (setq web-mode-content-types-alist
       '(("vue" . "\\.vue\\'")))
@@ -100,6 +93,15 @@
           (lambda ()
             (cond ((equal web-mode-content-type "vue")
                    (my/web-vue-setup)))))
+
+
+(defun my-set-tab-mode ()
+  (when (and (stringp buffer-file-name)
+             (string-match "\\.min.js\\'" buffer-file-name))
+    (toggle-truncate-lines)))
+
+(add-hook 'web-mode-hook 'my-set-tab-mode)
+
 
 ;; 代码检查工具
 (use-package flycheck
