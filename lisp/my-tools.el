@@ -248,11 +248,11 @@
   :defer t)
 ;; (telega-notifications-mode 1)
 
-;; (setq telega-proxies
-;;       (list
-;;        '(:server "127.0.0.1" :port 1081 :enable t :type
-;; 	  (:@type "proxyTypeSocks5"))
-;;        ))
+(setq telega-proxies
+      (list
+       '(:server "127.0.0.1" :port 7891 :enable t :type
+		 (:@type "proxyTypeSocks5"))
+       ))
 
 ;; 好用的终端 相比于 term e/shell
 (use-package vterm

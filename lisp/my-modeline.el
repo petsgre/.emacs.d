@@ -6,6 +6,7 @@
 
 ;; 在mode line 显示时间
 (display-time-mode 1)
+(setq display-time-default-load-average nil)
 
 ;;时间使用24小时制
 (setq display-time-24hr-format t)

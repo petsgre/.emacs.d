@@ -17,3 +17,4 @@ tramp
 transient/
 tutorial/
 url/
+.mc-lists.el
