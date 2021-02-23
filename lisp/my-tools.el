@@ -24,14 +24,14 @@
 ;; 有道词典，非常有用
 (use-package
   youdao-dictionary
-  :defer 2 
-  :ensure t 
-  :config (setq url-automatic-caching t) 
-  (which-key-add-key-based-replacements "C-x y" "有道翻译") 
-  :bind (("C-x y t" . 'youdao-dictionary-search-at-point+) 
-         ("C-x y g" . 'youdao-dictionary-search-at-point-posframe) 
-         ("C-x y p" . 'youdao-dictionary-play-voice-at-point) 
-         ("C-x y r" . 'youdao-dictionary-search-and-replace) 
+  :defer 2
+  :ensure t
+  :config (setq url-automatic-caching t)
+  (which-key-add-key-based-replacements "C-x y" "有道翻译")
+  :bind (("C-x y t" . 'youdao-dictionary-search-at-point+)
+         ("C-x y g" . 'youdao-dictionary-search-at-point-posframe)
+         ("C-x y p" . 'youdao-dictionary-play-voice-at-point)
+         ("C-x y r" . 'youdao-dictionary-search-and-replace)
          ("C-x y i" . 'youdao-dictionary-search-from-input)))
 
 ;; 多点编辑
@@ -118,37 +118,37 @@
   :ensure t
   :commands pinyinlib-build-regexp-string
   :init
-    (defun my-pinyinlib-build-regexp-string (str)
-      (cond ((equal str ".*")
-             ".*")
-            (t
-             (pinyinlib-build-regexp-string str t))))
+  (defun my-pinyinlib-build-regexp-string (str)
+    (cond ((equal str ".*")
+           ".*")
+          (t
+           (pinyinlib-build-regexp-string str t))))
 
-    (defun my-pinyin-regexp-helper (str)
-      (cond ((equal str " ")
-             ".*")
-            ((equal str "")
-             nil)
-            (t
-             str)))
+  (defun my-pinyin-regexp-helper (str)
+    (cond ((equal str " ")
+           ".*")
+          ((equal str "")
+           nil)
+          (t
+           str)))
 
-    (defun pinyin-to-utf8 (str)
-      (cond ((equal 0 (length str))
-             nil)
-            ((equal (substring str 0 1) ":")
-             (mapconcat 'my-pinyinlib-build-regexp-string
-                        (remove nil (mapcar 'my-pinyin-regexp-helper
-                                            (split-string
-                                             (replace-regexp-in-string ":" "" str ) "")))
-                        ""))
-            nil))
+  (defun pinyin-to-utf8 (str)
+    (cond ((equal 0 (length str))
+           nil)
+          ((equal (substring str 0 1) ":")
+           (mapconcat 'my-pinyinlib-build-regexp-string
+                      (remove nil (mapcar 'my-pinyin-regexp-helper
+                                          (split-string
+                                           (replace-regexp-in-string ":" "" str ) "")))
+                      ""))
+          nil))
 
-    (defun re-builder-pinyin (str)
-      (or (pinyin-to-utf8 str)
-          (ivy--regex-plus str)))
+  (defun re-builder-pinyin (str)
+    (or (pinyin-to-utf8 str)
+        (ivy--regex-plus str)))
 
-    (setq ivy-re-builders-alist
-          '((t . re-builder-pinyin))))
+  (setq ivy-re-builders-alist
+        '((t . re-builder-pinyin))))
 
 ;; 自动完成
 (use-package auto-complete
@@ -301,6 +301,10 @@
 
 ;; 转换org to markdown
 (use-package ox-gfm
+  :ensure t)
+
+;; 格式化代码
+(use-package format-all
   :ensure t)
 
 (provide 'my-tools)
