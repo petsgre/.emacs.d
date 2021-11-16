@@ -64,7 +64,7 @@
 (global-set-key (kbd"s-}") 'next-buffer)
 
 ;; 切换buffer时光标高亮动画
-(beacon-mode 1)
+;; (beacon-mode 1)
 
 ;; 全局模式修改自动保存
 (setq wgrep-auto-save-buffer t)
@@ -130,7 +130,9 @@
 (global-set-key (kbd "<f5>") 'revert-buffer)
 
 ;; 设置字体格式 describe-font 获取描述文件
-(set-default-font "-*-Monaco-normal-normal-normal-*-16-*-*-*-m-0-iso10646-1")
+(add-to-list 'default-frame-alist
+             '(font . "Monaco-16"))
+
 
 
 ;; 设置打开新窗口默认在右边

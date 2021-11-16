@@ -90,7 +90,7 @@
     ))
 
 ;; 拼音首字母搜索，还不能用，测试不通过
-(require 'pinyinlib)
+;; (require 'pinyinlib)
 
 (use-package pyim
   :ensure t

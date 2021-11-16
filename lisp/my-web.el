@@ -147,12 +147,12 @@
   ;; `M-x package-install [ret] company`
   (company-mode +1))
 
-(use-package tide
-  :ensure t
-  :bind (("M-." . tide-jump-to-definition)
-         ("M-," . tide-jump-back))
-  :config
-  (setup-tide-mode)
-  (add-hook 'web-mode-hook #'setup-tide-mode))
+;; (use-package tide
+;;   :ensure t
+;;   :bind (("M-." . tide-jump-to-definition)
+;;          ("M-," . tide-jump-back))
+;;   :config
+;;   (setup-tide-mode)
+;;   (add-hook 'web-mode-hook #'setup-tide-mode))
 
 (provide 'my-web)

@@ -18,3 +18,5 @@ transient/
 tutorial/
 url/
 .mc-lists.el
+smex-items
+themes
